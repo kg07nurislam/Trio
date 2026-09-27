@@ -1,0 +1,6 @@
+{
+  "name": "Trio",
+  "description": "A 3-in-1 productivity tool: Event Countdown, Color Palette Generator, and Personal Bookshelf with Kyrgyz & English support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

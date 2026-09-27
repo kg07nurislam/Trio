@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="ky" data-theme="system">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Trio — Үч курал бир жерде: Окуяларга артка саноо, Түстөр палитрасы жана Жеке китеп текчеси.">
+  <meta name="theme-color" content="#7C3AED">
+  <title>Trio — Окуялар, Палитралар, Китептер</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Desktop Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="Башкы навигация">
+      <div class="sidebar-brand">
+        <div class="brand-icon" aria-hidden="true">
+          <span class="brand-dot dot-violet"></span>
+          <span class="brand-dot dot-amber"></span>
+          <span class="brand-dot dot-emerald"></span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Trio</span>
+          <span class="brand-tagline" data-i18n="tagline">3-in-1 Куралдар топтому</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu" aria-label="Негизги бөлүмдөр">
+        <button type="button" class="nav-item active" data-tab="home" id="nav-home">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <span class="nav-label" data-i18n="navHome">Башкы бет</span>
+        </button>
+
+        <button type="button" class="nav-item" data-tab="events" id="nav-events">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+            <circle cx="12" cy="15" r="2"/>
+          </svg>
+          <span class="nav-label" data-i18n="navEvents">Окуялар</span>
+        </button>
+
+        <button type="button" class="nav-item" data-tab="colors" id="nav-colors">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"/>
+          </svg>
+          <span class="nav-label" data-i18n="navColors">Түстөр</span>
+        </button>
+
+        <button type="button" class="nav-item" data-tab="books" id="nav-books">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <span class="nav-label" data-i18n="navBooks">Китептер</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button type="button" class="nav-item settings-item" data-tab="settings" id="nav-settings">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          <span class="nav-label" data-i18n="navSettings">Жөндөөлөр</span>
+        </button>
+
+        <div class="sidebar-lang-theme-preview">
+          <span class="badge-subtle" id="sidebar-current-lang">KY</span>
+          <span class="badge-subtle" id="sidebar-current-theme">AUTO</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile Top Header -->
+    <header class="mobile-header" aria-label="Мобилдик башкы панель">
+      <div class="mobile-brand">
+        <span class="brand-dot dot-violet"></span>
+        <span class="mobile-brand-title">Trio</span>
+      </div>
+      <div class="mobile-header-actions">
+        <button type="button" class="btn-icon" id="btn-theme-quick" aria-label="Теманы өзгөртүү" title="Тема">
+          <svg class="icon-sun-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+        <button type="button" class="btn-icon" id="btn-open-settings-mobile" aria-label="Жөндөөлөрдү ачуу" title="Жөндөөлөр">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content" id="main-content">
+      
+      <!-- SECTION 1: HOME DASHBOARD -->
+      <section id="section-home" class="page-section active" aria-labelledby="home-heading">
+        <div class="page-header">
+          <div>
+            <h1 id="home-heading" class="page-title" data-i18n="homeWelcome">Кош келиңиз!</h1>
+            <p class="page-description" data-i18n="homeDescription">Trio — окуяларыңызды эсептеп, жаңы түстөрдү таап, сүйүктүү китептериңизди көзөмөлдөөчү жеке мейкиндик.</p>
+          </div>
+          <div class="today-badge" id="home-today-date" aria-live="polite">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Quick Actions Banner -->
+        <div class="quick-actions-bar" aria-label="Тез аракеттер">
+          <button type="button" class="btn btn-primary" id="btn-quick-add-event">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            <span data-i18n="quickAddEvent">Окуя кошуу</span>
+          </button>
+          <button type="button" class="btn btn-secondary" id="btn-quick-generate-palette">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg" aria-hidden="true">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
+            <span data-i18n="quickGeneratePalette">Палитра жаратуу</span>
+          </button>
+          <button type="button" class="btn btn-secondary" id="btn-quick-add-book">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg" aria-hidden="true">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              <line x1="12" y1="7" x2="12" y2="13"/>
+              <line x1="9" y1="10" x2="15" y2="10"/>
+            </svg>
+            <span data-i18n="quickAddBook">Китеп кошуу</span>
+          </button>
+        </div>
+
+        <!-- 3 Summary Stats Cards -->
+        <div class="summary-cards-grid">
+          <div class="card summary-card" role="button" tabindex="0" id="card-summary-events" aria-label="Окуяларга өтүү">
+            <div class="summary-card-header">
+              <span class="summary-icon-wrap icon-violet">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </span>
+              <span class="summary-arrow" aria-hidden="true">→</span>
+            </div>
+            <div class="summary-card-body">
+              <div class="summary-count" id="stat-upcoming-events-count">0</div>
+              <div class="summary-title" data-i18n="statUpcomingEvents">Алдыдагы окуялар</div>
+            </div>
+          </div>
+
+          <div class="card summary-card" role="button" tabindex="0" id="card-summary-palettes" aria-label="Түстөр палитрасына өтүү">
+            <div class="summary-card-header">
+              <span class="summary-icon-wrap icon-amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"/>
+                </svg>
+              </span>
+              <span class="summary-arrow" aria-hidden="true">→</span>
+            </div>
+            <div class="summary-card-body">
+              <div class="summary-count" id="stat-saved-palettes-count">0</div>
+              <div class="summary-title" data-i18n="statSavedPalettes">Сакталган палитралар</div>
+            </div>
+          </div>
+
+          <div class="card summary-card" role="button" tabindex="0" id="card-summary-books" aria-label="Китеп текчесине өтүү">
+            <div class="summary-card-header">
+              <span class="summary-icon-wrap icon-emerald">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+              </span>
+              <span class="summary-arrow" aria-hidden="true">→</span>
+            </div>
+            <div class="summary-card-body">
+              <div class="summary-count" id="stat-reading-books-count">0</div>
+              <div class="summary-title" data-i18n="statReadingBooks">Окулуп жаткан китептер</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Highlights & Previews Section -->
+        <div class="dashboard-highlights">
+          <h2 class="section-subtitle" data-i18n="dashboardSpotlight">Учурдагы сереп</h2>
+          
+          <div class="highlights-grid">
+            <!-- Nearest Event Preview Card -->
+            <div class="card highlight-card" id="highlight-event-card">
+              <div class="highlight-header">
+                <span class="highlight-category-tag" data-i18n="nearestEventTag">Эң жакын окуя</span>
+                <button type="button" class="btn-text-link" id="link-view-all-events" data-i18n="viewAll">Баарын көрүү →</button>
+              </div>
+              <div id="highlight-event-content" class="highlight-content">
+                <!-- Dynamically populated or empty state -->
+              </div>
+            </div>
+
+            <!-- Most Recent Saved Palette Preview Card -->
+            <div class="card highlight-card" id="highlight-palette-card">
+              <div class="highlight-header">
+                <span class="highlight-category-tag" data-i18n="latestPaletteTag">Акыркы палитра</span>
+                <button type="button" class="btn-text-link" id="link-view-all-palettes" data-i18n="viewAll">Баарын көрүү →</button>
+              </div>
+              <div id="highlight-palette-content" class="highlight-content">
+                <!-- Dynamically populated or empty state -->
+              </div>
+            </div>
+
+            <!-- Active Book Progress Card -->
+            <div class="card highlight-card" id="highlight-book-card">
+              <div class="highlight-header">
+                <span class="highlight-category-tag" data-i18n="activeBookTag">Акыркы окулган китеп</span>
+                <button type="button" class="btn-text-link" id="link-view-all-books" data-i18n="viewAll">Баарын көрүү →</button>
+              </div>
+              <div id="highlight-book-content" class="highlight-content">
+                <!-- Dynamically populated or empty state -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: EVENT COUNTDOWN -->
+      <section id="section-events" class="page-section" aria-labelledby="events-heading">
+        <div class="page-header">
+          <div>
+            <h1 id="events-heading" class="page-title" data-i18n="eventsTitle">Окуяларга артка саноо</h1>
+            <p class="page-description" data-i18n="eventsDescription">Маанилүү күндөрдү, туулган күндөрдү жана саякаттарды календарлык күндөр боюнча так көзөмөлдөңүз.</p>
+          </div>
+          <button type="button" class="btn btn-primary" id="btn-add-event">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            <span data-i18n="addEventBtn">Окуя кошуу</span>
+          </button>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-bar" role="tablist" aria-label="Окуялар чыпкасы">
+          <button type="button" role="tab" aria-selected="true" class="filter-tab active" data-filter="all" id="tab-events-all">
+            <span data-i18n="filterAll">Баары</span>
+            <span class="badge" id="badge-events-all">0</span>
+          </button>
+          <button type="button" role="tab" aria-selected="false" class="filter-tab" data-filter="upcoming" id="tab-events-upcoming">
+            <span data-i18n="filterUpcoming">Алдыда</span>
+            <span class="badge" id="badge-events-upcoming">0</span>
+          </button>
+          <button type="button" role="tab" aria-selected="false" class="filter-tab" data-filter="past" id="tab-events-past">
+            <span data-i18n="filterPast">Өткөн</span>
+            <span class="badge" id="badge-events-past">0</span>
+          </button>
+        </div>
+
+        <!-- Events List Container -->
+        <div id="events-container" class="events-grid" role="region" aria-live="polite">
+          <!-- Dynamically populated or empty state -->
+        </div>
+      </section>
+
+      <!-- SECTION 3: COLOR PALETTE GENERATOR -->
+      <section id="section-colors" class="page-section" aria-labelledby="colors-heading">
+        <div class="page-header">
+          <div>
+            <h1 id="colors-heading" class="page-title" data-i18n="colorsTitle">Түстөр палитрасы</h1>
+            <p class="page-description" data-i18n="colorsDescription">Беш түстөн турган гармониялуу палитраларды жаратыңыз, кулпулаңыз жана сактап коюңуз.</p>
+          </div>
+          <div class="page-header-actions">
+            <button type="button" class="btn btn-secondary" id="btn-save-current-palette">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg" aria-hidden="true">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                <polyline points="17 21 17 13 7 13 7 21"/>
+                <polyline points="7 3 7 8 15 8"/>
+              </svg>
+              <span data-i18n="btnSavePalette">Палитраны сактоо</span>
+            </button>
+            <button type="button" class="btn btn-primary" id="btn-generate-palette">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg" aria-hidden="true">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+              </svg>
+              <span data-i18n="btnGeneratePalette">Жаңы палитра</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Palettes Toolbar -->
+        <div class="palette-tools-banner">
+          <div class="palette-hint">
+            <span class="keyboard-key" aria-hidden="true">Боштук</span>
+            <span data-i18n="spacebarHint">баскычын басып жаңы палитра жаратсаңыз болот</span>
+          </div>
+          <div class="palette-actions-right">
+            <button type="button" class="btn btn-outline" id="btn-copy-all-colors">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              <span data-i18n="btnCopyAll">Баарын көчүрүү</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 5 Swatches Board -->
+        <div class="palette-board" id="palette-swatches-board" role="region" aria-label="Түстөр палитрасы">
+          <!-- 5 swatches rendered via JS -->
+        </div>
+
+        <!-- All locked warning notice (hidden by default) -->
+        <div id="all-locked-notice" class="all-locked-banner" style="display: none;" role="status">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="banner-icon" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <span data-i18n="allColorsLockedNotice">Бардык түстөр кулпуланган. Жаңы палитра жаратуу үчүн жок дегенде бир түстүн кулпусун ачыңыз.</span>
+        </div>
+
+        <!-- Saved Palettes Section -->
+        <div class="saved-palettes-wrapper">
+          <div class="saved-palettes-header">
+            <h2 class="section-subtitle" data-i18n="savedPalettesTitle">Сакталган палитралар</h2>
+            <span class="badge" id="badge-saved-palettes-count">0</span>
+          </div>
+          <div id="saved-palettes-container" class="saved-palettes-grid" role="region" aria-live="polite">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: PERSONAL BOOKSHELF -->
+      <section id="section-books" class="page-section" aria-labelledby="books-heading">
+        <div class="page-header">
+          <div>
+            <h1 id="books-heading" class="page-title" data-i18n="booksTitle">Жеке китеп текчеси</h1>
+            <p class="page-description" data-i18n="booksDescription">Окуу максаттарыңызды коюп, окулган беттерди жана китептердин жүрүшүн белгилеп туруңуз.</p>
+          </div>
+          <button type="button" class="btn btn-primary" id="btn-add-book">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            <span data-i18n="addBookBtn">Китеп кошуу</span>
+          </button>
+        </div>
+
+        <!-- Books Summary Statistics -->
+        <div class="books-stats-grid" aria-label="Китеп статистикасы">
+          <div class="book-stat-item">
+            <span class="stat-number" id="book-stat-total">0</span>
+            <span class="stat-label" data-i18n="booksStatTotal">Жалпы китептер</span>
+          </div>
+          <div class="book-stat-item">
+            <span class="stat-number" id="book-stat-reading">0</span>
+            <span class="stat-label" data-i18n="booksStatReading">Окуп жаткандар</span>
+          </div>
+          <div class="book-stat-item">
+            <span class="stat-number" id="book-stat-finished">0</span>
+            <span class="stat-label" data-i18n="booksStatFinished">Окулуп бүттү</span>
+          </div>
+          <div class="book-stat-item">
+            <span class="stat-number" id="book-stat-pages">0</span>
+            <span class="stat-label" data-i18n="booksStatPages">Окулган беттер</span>
+          </div>
+        </div>
+
+        <!-- Search, Filter & Sort Bar -->
+        <div class="books-controls-bar">
+          <div class="search-input-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="search" id="input-search-books" class="search-input" placeholder="Китеп же автор боюнча издөө..." data-i18n-placeholder="searchBooksPlaceholder" aria-label="Китептерди издөө">
+            <button type="button" class="btn-clear-search" id="btn-clear-search" aria-label="Издөөнү тазалоо" style="display:none;">&times;</button>
+          </div>
+
+          <div class="books-filter-sort-group">
+            <div class="filter-pills" role="tablist" aria-label="Китеп абалы боюнча чыпка">
+              <button type="button" role="tab" aria-selected="true" class="filter-pill active" data-status-filter="all" data-i18n="filterAll">Баары</button>
+              <button type="button" role="tab" aria-selected="false" class="filter-pill" data-status-filter="reading" data-i18n="statusReading">Окуп жатам</button>
+              <button type="button" role="tab" aria-selected="false" class="filter-pill" data-status-filter="want_to_read" data-i18n="statusWantToRead">Окугум келет</button>
+              <button type="button" role="tab" aria-selected="false" class="filter-pill" data-status-filter="finished" data-i18n="statusFinished">Окулуп бүттү</button>
+            </div>
+
+            <div class="sort-select-wrapper">
+              <label for="select-sort-books" class="sr-only" data-i18n="sortBooksLabel">Иреттөө</label>
+              <select id="select-sort-books" class="select-dropdown">
+                <option value="recent" data-i18n="sortRecent">Акыркы жаңыртылгандар</option>
+                <option value="title" data-i18n="sortTitle">Аталышы (А-Я)</option>
+                <option value="rating" data-i18n="sortRating">Эң жогорку баа</option>
+                <option value="progress" data-i18n="sortProgress">Окуу пайызы боюнча</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Books List Grid -->
+        <div id="books-container" class="books-grid" role="region" aria-live="polite">
+          <!-- Dynamically populated or empty state -->
+        </div>
+      </section>
+
+      <!-- SECTION 5: SETTINGS & DATA -->
+      <section id="section-settings" class="page-section" aria-labelledby="settings-heading">
+        <div class="page-header">
+          <div>
+            <h1 id="settings-heading" class="page-title" data-i18n="settingsTitle">Жөндөөлөр жана Дайындар</h1>
+            <p class="page-description" data-i18n="settingsDescription">Тилди, теманы тандаңыз жана маалыматтарыңыздын камдык көчүрмөсүн (JSON) сактап алыңыз.</p>
+          </div>
+        </div>
+
+        <div class="settings-cards-list">
+          <!-- Preferences Card -->
+          <div class="card settings-card">
+            <h2 class="card-subtitle" data-i18n="prefHeading">Интерфейс жана Көрүнүш</h2>
+            
+            <div class="setting-row">
+              <div class="setting-info">
+                <span class="setting-title" data-i18n="settingLanguage">Интерфейс тили</span>
+                <span class="setting-desc" data-i18n="settingLanguageDesc">Кыргызча же English тилдеринин бирин тандаңыз</span>
+              </div>
+              <div class="setting-control">
+                <div class="segmented-control" role="radiogroup" aria-label="Тил тандоо">
+                  <button type="button" role="radio" aria-checked="true" class="segmented-btn active" data-lang-val="ky" id="btn-lang-ky">
+                    <span>Кыргызча</span>
+                  </button>
+                  <button type="button" role="radio" aria-checked="false" class="segmented-btn" data-lang-val="en" id="btn-lang-en">
+                    <span>English</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-info">
+                <span class="setting-title" data-i18n="settingTheme">Тема</span>
+                <span class="setting-desc" data-i18n="settingThemeDesc">Жарык, күңүрт же системанын жөндөөсүнө ылайык</span>
+              </div>
+              <div class="setting-control">
+                <div class="segmented-control" role="radiogroup" aria-label="Тема тандоо">
+                  <button type="button" role="radio" aria-checked="false" class="segmented-btn" data-theme-val="light" id="btn-theme-light">
+                    <span data-i18n="themeLight">Жарык</span>
+                  </button>
+                  <button type="button" role="radio" aria-checked="false" class="segmented-btn" data-theme-val="dark" id="btn-theme-dark">
+                    <span data-i18n="themeDark">Күңүрт</span>
+                  </button>
+                  <button type="button" role="radio" aria-checked="true" class="segmented-btn active" data-theme-val="system" id="btn-theme-system">
+                    <span data-i18n="themeSystem">Системалык</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Backup & Restore Card -->
+          <div class="card settings-card">
+            <h2 class="card-subtitle" data-i18n="dataManagementHeading">Дайындарды сактоо жана калыбына келтирүү</h2>
+            
+            <div class="callout-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="callout-icon" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+              </svg>
+              <div class="callout-text" data-i18n="storageNotice">
+                Бардык маалыматтар ушул браузердин локалдык сактагычында (localStorage) сакталат жана автоматтык түрдө башка түзмөктөргө синхорондошпойт. Браузердин тарыхы тазаланганда өчүп калбашы үчүн мезгил-мезгили менен JSON камдык көчүрмөсүн жүктөп алыңыз.
+              </div>
+            </div>
+
+            <div class="backup-actions-grid">
+              <button type="button" class="btn btn-secondary btn-backup" id="btn-export-data">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span data-i18n="btnExportBackup">JSON камдык көчүрмөсүн экспорттоо</span>
+              </button>
+
+              <label class="btn btn-secondary btn-backup" for="input-import-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <span data-i18n="btnImportBackup">JSON камдык көчүрмөсүн импорттоо</span>
+                <input type="file" id="input-import-file" accept=".json,application/json" class="sr-only">
+              </label>
+            </div>
+          </div>
+
+          <!-- Danger Zone Card -->
+          <div class="card settings-card card-danger">
+            <h2 class="card-subtitle text-danger" data-i18n="dangerZoneHeading">Коркунучтуу аймак</h2>
+            <p class="setting-desc" data-i18n="dangerZoneDesc">Бардык окуяларды, палитраларды жана китептерди толугу менен өчүрүү. Бул аракетти кайтаруу мүмкүн эмес.</p>
+            <div class="danger-action-row">
+              <button type="button" class="btn btn-danger" id="btn-delete-all-data">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg" aria-hidden="true">
+                  <polyline points="3 6 5 6 21 6"/>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+                <span data-i18n="btnDeleteAllData">Бардык дайындарды биротоло өчүрүү</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Mobile Bottom Navigation (4 Destinations) -->
+    <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Мобилдик төмөнкү навигация">
+      <button type="button" class="bottom-nav-item active" data-tab="home" id="bnav-home">
+        <svg class="bottom-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span class="bottom-nav-label" data-i18n="navHome">Башкы</span>
+      </button>
+
+      <button type="button" class="bottom-nav-item" data-tab="events" id="bnav-events">
+        <svg class="bottom-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <span class="bottom-nav-label" data-i18n="navEvents">Окуялар</span>
+      </button>
+
+      <button type="button" class="bottom-nav-item" data-tab="colors" id="bnav-colors">
+        <svg class="bottom-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+          <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+          <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+          <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"/>
+        </svg>
+        <span class="bottom-nav-label" data-i18n="navColors">Түстөр</span>
+      </button>
+
+      <button type="button" class="bottom-nav-item" data-tab="books" id="bnav-books">
+        <svg class="bottom-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        <span class="bottom-nav-label" data-i18n="navBooks">Китептер</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ==================== MODALS & DIALOGS ==================== -->
+
+  <!-- Modal 1: Add/Edit Event Dialog -->
+  <div class="modal-backdrop" id="modal-event" role="dialog" aria-modal="true" aria-labelledby="modal-event-title" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id="modal-event-title" class="modal-title" data-i18n="modalAddEventTitle">Жаңы окуя кошуу</h2>
+        <button type="button" class="modal-btn-close" data-close-modal="modal-event" aria-label="Жабуу">&times;</button>
+      </div>
+      <form id="form-event" novalidate>
+        <input type="hidden" id="event-id">
+        <div class="modal-body">
+          <!-- Event Name -->
+          <div class="form-group">
+            <label for="event-name" class="form-label" data-i18n="formEventName">Окуянын аталышы *</label>
+            <input type="text" id="event-name" class="form-input" required maxlength="100" placeholder="мис., Айгүлдүн туулган күнү" data-i18n-placeholder="formEventNamePlaceholder">
+            <div class="form-error" id="error-event-name" role="alert"></div>
+          </div>
+
+          <!-- Target Date -->
+          <div class="form-group">
+            <label for="event-date" class="form-label" data-i18n="formEventDate">Максаттуу дата *</label>
+            <input type="date" id="event-date" class="form-input" required>
+            <div class="form-error" id="error-event-date" role="alert"></div>
+          </div>
+
+          <!-- Category & Icon Row -->
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="event-category" class="form-label" data-i18n="formEventCategory">Категория</label>
+              <select id="event-category" class="form-input select-dropdown">
+                <option value="birthday" data-i18n="categoryBirthday">🎂 Туулган күн</option>
+                <option value="trip" data-i18n="categoryTrip">✈️ Саякат</option>
+                <option value="exam" data-i18n="categoryExam">📝 Сынак</option>
+                <option value="celebration" data-i18n="categoryCelebration">🎉 Майрам</option>
+                <option value="other" data-i18n="categoryOther">📌 Башка</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="event-emoji" class="form-label" data-i18n="formEventIcon">Иконка / Эмодзи</label>
+              <input type="text" id="event-emoji" class="form-input text-center" maxlength="4" value="📅" aria-label="Окуя эмодзиси">
+            </div>
+          </div>
+
+          <!-- Accent Color & Quick Palettes -->
+          <div class="form-group">
+            <label class="form-label" data-i18n="formEventAccent">Басым түсү</label>
+            <div class="color-picker-row">
+              <input type="color" id="event-accent-picker" class="form-color-circle" value="#7C3AED" aria-label="Түс тандоо">
+              <div class="color-preset-pills" id="event-color-presets">
+                <button type="button" class="color-preset-pill active" data-color="#7C3AED" style="background:#7C3AED;" aria-label="Кызгылт көк"></button>
+                <button type="button" class="color-preset-pill" data-color="#2563EB" style="background:#2563EB;" aria-label="Көк"></button>
+                <button type="button" class="color-preset-pill" data-color="#059669" style="background:#059669;" aria-label="Жашыл"></button>
+                <button type="button" class="color-preset-pill" data-color="#D97706" style="background:#D97706;" aria-label="Сары"></button>
+                <button type="button" class="color-preset-pill" data-color="#DC2626" style="background:#DC2626;" aria-label="Кызыл"></button>
+                <button type="button" class="color-preset-pill" data-color="#DB2777" style="background:#DB2777;" aria-label="Ачык кызыл"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Annual Repeat Switch -->
+          <div class="form-group">
+            <label class="switch-label">
+              <input type="checkbox" id="event-repeat-annual" class="switch-checkbox">
+              <span class="switch-toggle" aria-hidden="true"></span>
+              <span class="switch-text" data-i18n="formEventRepeat">Жыл сайын кайталоо (маараке/туулган күн)</span>
+            </label>
+            <div class="form-hint" data-i18n="formEventRepeatHint">Жыл сайын кайталанган окуянын кийинки күнү автоматтык түрдө эсептелет. 29-февраль толук эмес жылдарда 28-февраль деп эсептелет.</div>
+          </div>
+
+          <!-- Optional Note -->
+          <div class="form-group">
+            <label for="event-note" class="form-label" data-i18n="formEventNote">Кошумча эскертүү (каалоо боюнча)</label>
+            <textarea id="event-note" class="form-textarea" rows="2" maxlength="250" placeholder="Белек даярдоо, билет алуу ж.б." data-i18n-placeholder="formEventNotePlaceholder"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-close-modal="modal-event" data-i18n="btnCancel">Жокко чыгаруу</button>
+          <button type="submit" class="btn btn-primary" id="btn-submit-event" data-i18n="btnSave">Сактоо</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Save Palette Dialog -->
+  <div class="modal-backdrop" id="modal-save-palette" role="dialog" aria-modal="true" aria-labelledby="modal-save-palette-title" style="display:none;">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-header">
+        <h2 id="modal-save-palette-title" class="modal-title" data-i18n="modalSavePaletteTitle">Палитраны сактоо</h2>
+        <button type="button" class="modal-btn-close" data-close-modal="modal-save-palette" aria-label="Жабуу">&times;</button>
+      </div>
+      <form id="form-save-palette">
+        <input type="hidden" id="save-palette-id">
+        <div class="modal-body">
+          <div class="modal-palette-preview" id="modal-palette-color-stripes" aria-hidden="true">
+            <!-- 5 stripes rendered via JS -->
+          </div>
+          <div class="form-group">
+            <label for="palette-name-input" class="form-label" data-i18n="formPaletteName">Палитранын аталышы (каалоо боюнча)</label>
+            <input type="text" id="palette-name-input" class="form-input" maxlength="40" placeholder="мис., Күзгү кеч" data-i18n-placeholder="formPaletteNamePlaceholder">
+            <div class="form-hint" data-i18n="formPaletteNameHint">Эгер аталыш жазылбаса, автоматтык түрдө نوم берилет.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-close-modal="modal-save-palette" data-i18n="btnCancel">Жокко чыгаруу</button>
+          <button type="submit" class="btn btn-primary" data-i18n="btnSave">Сактоо</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Add/Edit Book Dialog -->
+  <div class="modal-backdrop" id="modal-book" role="dialog" aria-modal="true" aria-labelledby="modal-book-title" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id="modal-book-title" class="modal-title" data-i18n="modalAddBookTitle">Жаңы китеп кошуу</h2>
+        <button type="button" class="modal-btn-close" data-close-modal="modal-book" aria-label="Жабуу">&times;</button>
+      </div>
+      <form id="form-book" novalidate>
+        <input type="hidden" id="book-id">
+        <div class="modal-body">
+          <!-- Book Title -->
+          <div class="form-group">
+            <label for="book-title" class="form-label" data-i18n="formBookTitle">Китептин аталышы *</label>
+            <input type="text" id="book-title" class="form-input" required maxlength="120" placeholder="мис., Саякбай, Жамийла, Атомдук адаттар" data-i18n-placeholder="formBookTitlePlaceholder">
+            <div class="form-error" id="error-book-title" role="alert"></div>
+          </div>
+
+          <!-- Book Author -->
+          <div class="form-group">
+            <label for="book-author" class="form-label" data-i18n="formBookAuthor">Автору (каалоо боюнча)</label>
+            <input type="text" id="book-author" class="form-input" maxlength="80" placeholder="мис., Чыңгыз Айтматов" data-i18n-placeholder="formBookAuthorPlaceholder">
+          </div>
+
+          <!-- Total Pages & Pages Read Row -->
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="book-total-pages" class="form-label" data-i18n="formBookTotalPages">Жалпы бет саны *</label>
+              <input type="number" id="book-total-pages" class="form-input" required min="1" max="99999" placeholder="320">
+              <div class="form-error" id="error-book-total-pages" role="alert"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="book-pages-read" class="form-label" data-i18n="formBookPagesRead">Окулган беттер</label>
+              <input type="number" id="book-pages-read" class="form-input" min="0" max="99999" value="0">
+              <div class="form-error" id="error-book-pages-read" role="alert"></div>
+            </div>
+          </div>
+
+          <!-- Status & Rating Row -->
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="book-status" class="form-label" data-i18n="formBookStatus">Окуу абалы</label>
+              <select id="book-status" class="form-input select-dropdown">
+                <option value="reading" data-i18n="statusReading">📖 Окуп жатам</option>
+                <option value="want_to_read" data-i18n="statusWantToRead">🔖 Окугум келет</option>
+                <option value="finished" data-i18n="statusFinished">✅ Окулуп бүттү</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="book-rating" class="form-label" data-i18n="formBookRating">Баалоо</label>
+              <select id="book-rating" class="form-input select-dropdown">
+                <option value="0" data-i18n="ratingUnrated">Баалана элек</option>
+                <option value="5">★★★★★ (5/5)</option>
+                <option value="4">★★★★☆ (4/5)</option>
+                <option value="3">★★★☆☆ (3/5)</option>
+                <option value="2">★★☆☆☆ (2/5)</option>
+                <option value="1">★☆☆☆☆ (1/5)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Cover Image URL -->
+          <div class="form-group">
+            <label for="book-cover-url" class="form-label" data-i18n="formBookCoverUrl">Мукабанын сүрөт шилтемеси (URL)</label>
+            <input type="url" id="book-cover-url" class="form-input" placeholder="https://example.com/cover.jpg" data-i18n-placeholder="formBookCoverPlaceholder">
+            <div class="form-hint" data-i18n="formBookCoverHint">Бош калтырылса же сүрөт жүктөлбөсө, стилдүү жасалма мукаба көрсөтүлөт.</div>
+          </div>
+
+          <!-- Optional Notes -->
+          <div class="form-group">
+            <label for="book-notes" class="form-label" data-i18n="formBookNotes">Китеп боюнча ойлор же цитаталар</label>
+            <textarea id="book-notes" class="form-textarea" rows="2" maxlength="300" placeholder="Эң жакшы цитата же кыскача пикир..." data-i18n-placeholder="formBookNotesPlaceholder"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-close-modal="modal-book" data-i18n="btnCancel">Жокко чыгаруу</button>
+          <button type="submit" class="btn btn-primary" id="btn-submit-book" data-i18n="btnSave">Сактоо</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 4: Quick Progress Update Modal -->
+  <div class="modal-backdrop" id="modal-quick-progress" role="dialog" aria-modal="true" aria-labelledby="modal-progress-title" style="display:none;">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-header">
+        <h2 id="modal-progress-title" class="modal-title" data-i18n="modalProgressTitle">Окуу жүрүшүн жаңыртуу</h2>
+        <button type="button" class="modal-btn-close" data-close-modal="modal-quick-progress" aria-label="Жабуу">&times;</button>
+      </div>
+      <form id="form-quick-progress">
+        <input type="hidden" id="quick-progress-book-id">
+        <div class="modal-body">
+          <div class="quick-book-target-name" id="quick-progress-book-title"></div>
+          
+          <div class="quick-progress-controls">
+            <button type="button" class="btn btn-outline btn-step" id="btn-step-minus-10" aria-label="10 бет артка">-10</button>
+            <button type="button" class="btn btn-outline btn-step" id="btn-step-minus-1" aria-label="1 бет артка">-1</button>
+            
+            <div class="quick-page-input-wrapper">
+              <input type="number" id="quick-progress-page-input" class="form-input text-center text-bold" min="0">
+              <span class="quick-page-total" id="quick-progress-total-display">/ 0 бет</span>
+            </div>
+
+            <button type="button" class="btn btn-outline btn-step" id="btn-step-plus-1" aria-label="1 бет алдыга">+1</button>
+            <button type="button" class="btn btn-outline btn-step" id="btn-step-plus-10" aria-label="10 бет алдыга">+10</button>
+          </div>
+
+          <div class="quick-progress-preview-bar">
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="quick-progress-bar-fill" style="width: 0%;"></div>
+            </div>
+            <div class="progress-percent-label" id="quick-progress-percent">0%</div>
+          </div>
+          <div class="form-error" id="error-quick-progress" role="alert"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-close-modal="modal-quick-progress" data-i18n="btnCancel">Жокко чыгаруу</button>
+          <button type="submit" class="btn btn-primary" data-i18n="btnSaveProgress">Жаңыртуу</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 5: Generic Confirm Dialog -->
+  <div class="modal-backdrop" id="modal-confirm" role="alertdialog" aria-modal="true" aria-labelledby="modal-confirm-title" aria-describedby="modal-confirm-desc" style="display:none;">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-header">
+        <h2 id="modal-confirm-title" class="modal-title">Ырастоо</h2>
+        <button type="button" class="modal-btn-close" data-close-modal="modal-confirm" aria-label="Жабуу">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="modal-confirm-desc" class="modal-confirm-text"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="btn-confirm-cancel" data-close-modal="modal-confirm" data-i18n="btnCancel">Жокко чыгаруу</button>
+        <button type="button" class="btn btn-danger" id="btn-confirm-accept" data-i18n="btnDelete">Өчүрүү</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: Manual Clipboard Fallback Dialog -->
+  <div class="modal-backdrop" id="modal-manual-copy" role="dialog" aria-modal="true" aria-labelledby="modal-copy-title" style="display:none;">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-header">
+        <h2 id="modal-copy-title" class="modal-title" data-i18n="modalManualCopyTitle">Текстти көчүрүү</h2>
+        <button type="button" class="modal-btn-close" data-close-modal="modal-manual-copy" aria-label="Жабуу">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="form-hint" data-i18n="modalManualCopyHint">Браузердин түз көчүрүү мүмкүнчүлүгү чектелген. Төмөнкү текстти бөлүп алып, Ctrl+C (же Cmd+C) басыңыз:</p>
+        <textarea id="manual-copy-textarea" class="form-textarea" rows="3" readonly></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-close-modal="modal-manual-copy" data-i18n="btnClose">Жабуу</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
